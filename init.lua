@@ -1,5 +1,4 @@
--- Map leader to space
-vim.g.mapleader = ' '
+-- @TODO: find out a way to automatically run vim.diagnostic.hide() on php buffers
 
 require('plugins')
 require('lsp_lua')
@@ -15,6 +14,7 @@ local function attach_lsp_keybinds(_, bufnr)
 
   local opts = { noremap=true, silent=true }
 
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<Leader>g', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', '<Leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -35,6 +35,7 @@ local function attach_lsp_keybinds(_, bufnr)
 end
 
 --require'lspconfig'.pyright.setup{}
+--
 lspconfig.efm.setup{
 	filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "yaml", "markdown"},
   on_attach = attach_lsp_keybinds,
@@ -46,6 +47,8 @@ lspconfig.flow.setup{
 
 lspconfig.psalm.setup{
   on_attach = attach_lsp_keybinds,
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	on_publish_diagnostics = { virtual_text = false },
 	cmd = {"x", "psalm", "--language-server"},
 	flags = { debounce_text_changes = 150 },
 }
@@ -91,3 +94,29 @@ end
 lspconfig.xo_custom.setup{}
 --]]
 
+
+-- Hacky way to force syntax=php. Should work without it but it doesn't
+local phpBufGroup = vim.api.nvim_create_augroup("php_ft", { clear = true })
+vim.api.nvim_create_autocmd(
+	{ "BufNewFile", "BufRead" },
+	{ pattern = "*.php", command = "set syntax=php", group = phpBufGroup }
+)
+
+-- xdebug setup
+--[[
+local dap = require('dap')
+dap.adapters.php = {
+  type = 'executable',
+  command = 'node',
+  args = { '/home/peter/.config/nvim/lib/vscode-php-debug/out/phpDebug.js' }
+}
+
+dap.configurations.php = {
+  {
+    type = 'php',
+    request = 'launch',
+    name = 'Listen for Xdebug',
+    port = 9003
+  }
+}
+--]]

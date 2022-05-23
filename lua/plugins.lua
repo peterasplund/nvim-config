@@ -28,24 +28,42 @@ return require('packer').startup(function ()
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
-      config = function()
-        local treesitter_configs = require("nvim-treesitter.configs")
+			vim.cmd("TSUpdate bash")
+			vim.cmd("TSUpdate c")
+			vim.cmd("TSUpdate dockerfile")
+			vim.cmd("TSUpdate dot")
+			vim.cmd("TSUpdate graphql")
+			vim.cmd("TSUpdate haskell")
+			vim.cmd("TSUpdate html")
+			vim.cmd("TSUpdate java")
+			vim.cmd("TSUpdate javascript")
+			vim.cmd("TSUpdate json")
+			vim.cmd("TSUpdate lua")
+			vim.cmd("TSUpdate php")
+			vim.cmd("TSUpdate python")
+			vim.cmd("TSUpdate ruby")
+			vim.cmd("TSUpdate rust")
+			vim.cmd("TSUpdate toml")
+			vim.cmd("TSUpdate vim")
+			vim.cmd("TSUpdate yaml")
+		end,
+		config = function()
+			local treesitter_configs = require("nvim-treesitter.configs")
 
-        treesitter_configs.setup({
-          highlight = {
-            enable = true,
-          },
-          indent = {
-            disable = { "php" },
-            enable = true,
-          },
-          rainbow = {
-            enable = true,
-            extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-          },
-        })
-      end
-    end
+			treesitter_configs.setup({
+				highlight = {
+					enable = true,
+				},
+				indent = {
+					disable = { "php" },
+					enable = true,
+				},
+				rainbow = {
+					enable = true,
+					extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+				},
+			})
+		end
   }
   use {
     'nvim-telescope/telescope.nvim',
@@ -75,6 +93,8 @@ return require('packer').startup(function ()
   -- use 'maxmellon/vim-jsx-pretty'
 
   use 'editorconfig/editorconfig-vim'
+
+	use 'mfussenegger/nvim-dap'
 
   use {
     "lewis6991/gitsigns.nvim",
