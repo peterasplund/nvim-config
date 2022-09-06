@@ -9,7 +9,7 @@ utils.map('i', 'jj', '<Esc>')           -- jj to escape
 utils.map('n', '<Leader>m', '<cmd>:NvimTreeToggle<CR>')
 utils.map('n', '<F4>', '<cmd>:NvimTreeFindFile<CR>')
 
-utils.map('n', '<C-p>', '<cmd>:Telescope git_files<CR>') -- Fuzzy find file in project
+utils.map('n', '<C-p>', '<cmd>:Telescope find_files<CR>') -- Fuzzy find file in project
 utils.map("", "<Leader>p", "<cmd>lua require('telescope.builtin').find_files({no_ignore = true})<CR>", { noremap = true, silent = true }) -- Fuzzy find file in project, ignoring ignores
 utils.map('n', '<F2>', '<cmd>:Telescope live_grep<CR>') -- Grep all files in project
 

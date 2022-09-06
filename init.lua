@@ -8,11 +8,13 @@ local configs = require'lspconfig/configs'
 require "lsp_signature".on_attach()
 
 -- Hacky way to force syntax=php. Should work without it but it doesn't
+--[[
 local phpBufGroup = vim.api.nvim_create_augroup("php_ft", { clear = true })
 vim.api.nvim_create_autocmd(
 	{ "BufNewFile", "BufRead" },
 	{ pattern = "*.php", command = "set syntax=php", group = phpBufGroup }
 )
+--]]
 
 -- xdebug setup
 --[[

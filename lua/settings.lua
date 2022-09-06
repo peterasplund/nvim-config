@@ -77,8 +77,6 @@ utils.opt('o', 'clipboard','unnamed,unnamedplus')
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- Syntax
-cmd 'filetype plugin indent on'
-cmd 'syntax on'
 cmd 'colorscheme snazzy'
 vim.o.termguicolors = true
 

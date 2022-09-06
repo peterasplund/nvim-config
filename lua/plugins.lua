@@ -3,12 +3,7 @@ return require('packer').startup(function ()
   use 'nanotech/jellybeans.vim'
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
   use 'tjdevries/nlua.nvim'
-  use {
-    "onsails/lspkind-nvim",
-    config = function()
-      require("lspkind").init({ mode = 'symbol' })
-    end,
-  }
+	use { "tweekmonster/startuptime.vim" }
 
 -- Disable for now. This causes a deprecation error
 --[[
@@ -37,6 +32,7 @@ return require('packer').startup(function ()
 			vim.cmd("TSUpdate html")
 			vim.cmd("TSUpdate java")
 			vim.cmd("TSUpdate javascript")
+			vim.cmd("TSUpdate typescript")
 			vim.cmd("TSUpdate json")
 			vim.cmd("TSUpdate lua")
 			vim.cmd("TSUpdate php")
@@ -46,27 +42,58 @@ return require('packer').startup(function ()
 			vim.cmd("TSUpdate toml")
 			vim.cmd("TSUpdate vim")
 			vim.cmd("TSUpdate yaml")
+			vim.cmd("TSUpdate gdscript")
 		end,
 		config = function()
-			local treesitter_configs = require("nvim-treesitter.configs")
+			local treesitter = require('nvim-treesitter.configs')
 
-			treesitter_configs.setup({
-				highlight = {
+			treesitter.setup({
+				playground = {
 					enable = true,
+					disable = {},
+					updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+					persist_queries = false -- Whether the query persists across vim sessions
 				},
+				highlight = { enable = true },
+				textobjects = { enable = true },
+				autotag = { enable = true },
 				indent = {
+					--disable = { "php" },
 					enable = true,
 				},
 				rainbow = {
 					enable = true,
 					extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 				},
+				ensure_installed = {
+					'bash',
+					'css',
+					'html',
+					'javascript',
+					'php',
+					'python',
+					'query',
+					'rust',
+					'toml',
+					'yaml',
+				},
 			})
 		end
   }
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+		config = function()
+			require("telescope").setup({
+				pickers  = {
+					find_files = {
+						hidden = true,
+						-- Hide git
+						file_ignore_patterns = {".git"}
+					}
+				}
+			})
+		end
   }
 
   use {
@@ -89,7 +116,7 @@ return require('packer').startup(function ()
 	use "saadparwaiz1/cmp_luasnip"
 	use "rafamadriz/friendly-snippets"
   use "ray-x/lsp_signature.nvim"
-  use "StanAngeloff/php.vim"
+  -- use "StanAngeloff/php.vim"
 
   --use 'chemzqm/vim-jsx-improve'
   -- use 'maxmellon/vim-jsx-pretty'
@@ -106,5 +133,5 @@ return require('packer').startup(function ()
     event = "BufRead",
     commit = "25d4b182ece5b03cd4b2d8c196f3c38e0df58801",
   }
-
 end)
+

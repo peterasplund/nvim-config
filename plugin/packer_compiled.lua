@@ -127,12 +127,6 @@ _G.packer_plugins = {
     path = "/home/peter/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
-  ["lspkind-nvim"] = {
-    config = { "\27LJ\2\nG\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tmode\vsymbol\tinit\flspkind\frequire\0" },
-    loaded = true,
-    path = "/home/peter/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
-    url = "https://github.com/onsails/lspkind-nvim"
-  },
   ["nlua.nvim"] = {
     loaded = true,
     path = "/home/peter/.local/share/nvim/site/pack/packer/start/nlua.nvim",
@@ -170,7 +164,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n½\1\0\0\6\0\v\0\0156\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0004\5\0\0=\5\a\4=\4\b\0035\4\t\0=\4\n\3B\1\2\1K\0\1\0\frainbow\1\0\2\venable\2\18extended_mode\2\vindent\fdisable\1\0\1\venable\2\14highlight\1\0\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\n‰\3\0\0\6\0\19\0\0236\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\5\0005\4\3\0004\5\0\0=\5\4\4=\4\6\0035\4\a\0=\4\b\0035\4\t\0=\4\n\0035\4\v\0=\4\f\0035\4\r\0=\4\14\0035\4\15\0=\4\16\0035\4\17\0=\4\18\3B\1\2\1K\0\1\0\21ensure_installed\1\v\0\0\tbash\bcss\thtml\15javascript\bphp\vpython\nquery\trust\ttoml\tyaml\frainbow\1\0\2\18extended_mode\2\venable\2\vindent\1\0\1\venable\2\fautotag\1\0\1\venable\2\16textobjects\1\0\1\venable\2\14highlight\1\0\1\venable\2\15playground\1\0\0\fdisable\1\0\3\venable\2\20persist_queries\1\15updatetime\3\25\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/home/peter/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -185,11 +179,6 @@ _G.packer_plugins = {
     path = "/home/peter/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["php.vim"] = {
-    loaded = true,
-    path = "/home/peter/.local/share/nvim/site/pack/packer/start/php.vim",
-    url = "https://github.com/StanAngeloff/php.vim"
-  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/peter/.local/share/nvim/site/pack/packer/start/plenary.nvim",
@@ -199,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/peter/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["startuptime.vim"] = {
+    loaded = true,
+    path = "/home/peter/.local/share/nvim/site/pack/packer/start/startuptime.vim",
+    url = "https://github.com/tweekmonster/startuptime.vim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -214,12 +208,8 @@ try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K
 time([[Config for nvim-tree.lua]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n½\1\0\0\6\0\v\0\0156\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0004\5\0\0=\5\a\4=\4\b\0035\4\t\0=\4\n\3B\1\2\1K\0\1\0\frainbow\1\0\2\venable\2\18extended_mode\2\vindent\fdisable\1\0\1\venable\2\14highlight\1\0\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\n‰\3\0\0\6\0\19\0\0236\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\5\0005\4\3\0004\5\0\0=\5\4\4=\4\6\0035\4\a\0=\4\b\0035\4\t\0=\4\n\0035\4\v\0=\4\f\0035\4\r\0=\4\14\0035\4\15\0=\4\16\0035\4\17\0=\4\18\3B\1\2\1K\0\1\0\21ensure_installed\1\v\0\0\tbash\bcss\thtml\15javascript\bphp\vpython\nquery\trust\ttoml\tyaml\frainbow\1\0\2\18extended_mode\2\venable\2\vindent\1\0\1\venable\2\fautotag\1\0\1\venable\2\16textobjects\1\0\1\venable\2\14highlight\1\0\1\venable\2\15playground\1\0\0\fdisable\1\0\3\venable\2\20persist_queries\1\15updatetime\3\25\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
--- Config for: lspkind-nvim
-time([[Config for lspkind-nvim]], true)
-try_loadstring("\27LJ\2\nG\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tmode\vsymbol\tinit\flspkind\frequire\0", "config", "lspkind-nvim")
-time([[Config for lspkind-nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

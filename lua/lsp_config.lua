@@ -64,6 +64,21 @@ lspconfig.rust_analyzer.setup({
 	}
 })
 
+lspconfig.tsserver.setup({
+	on_attach = function(client, bufnr)
+		vim.api.nvim_exec_autocmds('User', {pattern = 'LspAttached'})
+
+		--[[
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+		local ts_utils = require("nvim-lsp-ts-utils")
+		ts_utils.setup({})
+		ts_utils.setup_client(client)
+		on_attach(client, bufnr)
+		--]]
+	end,
+})
+
 --require'lspconfig'.pyright.setup{}
 
 --[[
@@ -82,3 +97,14 @@ end
 
 lspconfig.xo_custom.setup{}
 --]]
+
+lspconfig.gdscript.setup{
+	on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 250,
+  },
+}
+
+lspconfig.ccls.setup{
+	on_attach = on_attach,
+}
