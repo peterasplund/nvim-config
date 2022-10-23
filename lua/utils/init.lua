@@ -53,4 +53,14 @@ function utils.addIndentCommands(autogroup, filetype, config)
 	end
 end
 
+-- Context sensitive format function
+function utils.format()
+  if vim.bo.filetype == 'rust' then
+    vim.cmd('RustFmt')
+  else
+    vim.cmd('CocCommand prettier.forceFormatDocument')
+  end
+end
+
 return utils
+

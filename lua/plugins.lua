@@ -1,6 +1,7 @@
 return require('packer').startup(function ()
   use 'wbthomason/packer.nvim'
   use 'nanotech/jellybeans.vim'
+	use 'folke/tokyonight.nvim'
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
   use 'tjdevries/nlua.nvim'
 	use { "tweekmonster/startuptime.vim" }
@@ -125,13 +126,15 @@ return require('packer').startup(function ()
 
 	use 'mfussenegger/nvim-dap'
 
+	use 'mustache/vim-mustache-handlebars'
+
+
   use {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup()
     end,
     event = "BufRead",
-    commit = "25d4b182ece5b03cd4b2d8c196f3c38e0df58801",
   }
 end)
 

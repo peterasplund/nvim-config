@@ -77,9 +77,12 @@ utils.opt('o', 'clipboard','unnamed,unnamedplus')
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- Syntax
-cmd 'colorscheme snazzy'
+-- cmd 'colorscheme snazzy'
+cmd 'colorscheme tokyonight-night'
 vim.o.termguicolors = true
 
+-- Disable mouse
+cmd 'set mouse='
 
 -- Global function for stripping whitespace from files
 function _G.StripTrailingWhitespace()

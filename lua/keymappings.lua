@@ -19,11 +19,14 @@ utils.map('n', '<C-j>', '<C-w>j')
 utils.map('n', '<C-k>', '<C-w>k')
 utils.map('n', '<C-l>', '<C-w>l')
 
+
+utils.map("", "<Leader>f", "<cmd>:lua utils.format<CR>")
+
 -- Move between buffers easier
 utils.map('n', '<Leader>j', ':bnext<CR>')
 utils.map('n', '<Leader>k', ':previous<CR>')
 
-utils.map('n', '<F1>', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+utils.map('n', '<F1>', '<cmd>lua vim.diagnostic.open_float()<CR>')
 
 -- Debugger
 utils.map('n', 'db', '<cmd>lua require\'dap\'.toggle_breakpoint()<CR>')
