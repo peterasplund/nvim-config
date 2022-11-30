@@ -4,16 +4,6 @@ return require('packer').startup(function ()
 	use 'folke/tokyonight.nvim'
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
   use 'tjdevries/nlua.nvim'
-	use { "tweekmonster/startuptime.vim" }
-
--- Disable for now. This causes a deprecation error
---[[
-  use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
---]]
 
   use {
     'kyazdani42/nvim-tree.lua', -- File explorer sidebar
@@ -21,6 +11,7 @@ return require('packer').startup(function ()
       require("nvim-tree").setup()
     end
   }
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -81,6 +72,7 @@ return require('packer').startup(function ()
 			})
 		end
   }
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
@@ -106,8 +98,6 @@ return require('packer').startup(function ()
 	}
   use { 'neovim/nvim-lspconfig' }
   use 'norcalli/nvim-colorizer.lua'
-  --use 'windwp/nvim-autopairs'
-  
   
 	use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-nvim-lsp"
@@ -117,17 +107,18 @@ return require('packer').startup(function ()
 	use "saadparwaiz1/cmp_luasnip"
 	use "rafamadriz/friendly-snippets"
   use "ray-x/lsp_signature.nvim"
-  -- use "StanAngeloff/php.vim"
-
-  --use 'chemzqm/vim-jsx-improve'
-  -- use 'maxmellon/vim-jsx-pretty'
 
   use 'editorconfig/editorconfig-vim'
 
+	-- Debuggger	
 	use 'mfussenegger/nvim-dap'
 
 	use 'mustache/vim-mustache-handlebars'
 
+	-- Status bar	
+	use 'feline-nvim/feline.nvim'
+
+	use 'endaaman/vim-case-master'
 
   use {
     "lewis6991/gitsigns.nvim",

@@ -35,6 +35,10 @@ utils.map('n', 'dsi', '<cmd>lua require\'dap\'.step_into()<CR>')
 utils.map('n', 'dso', '<cmd>lua require\'dap\'.step_over()<CR>')
 utils.map('n', 'dss', '<cmd>lua require\'dap\'.repl.open()<CR>')
 
+utils.map('n', 'cp', '<cmd>:CaseMasterConvertToPascal<CR>')
+utils.map('n', 'cs', '<cmd>:CaseMasterConvertToSnake<CR>')
+utils.map('n', 'cc', '<cmd>:CaseMasterConvertToCamel<CR>')
+
 -- LSP specific keybindings
 vim.api.nvim_create_autocmd('User', {
   pattern = 'LspAttached',
@@ -62,6 +66,7 @@ vim.api.nvim_create_autocmd('User', {
 		bufmap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 		bufmap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
 		bufmap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-		bufmap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+		--bufmap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+		bufmap('n', "<space>f", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
   end
 })
