@@ -7,6 +7,8 @@ local lsp_defaults = {
   flags = {
     debounce_text_changes = 150,
   },
+
+
   capabilities = require('cmp_nvim_lsp').default_capabilities(
     vim.lsp.protocol.make_client_capabilities()
   ),
@@ -21,6 +23,7 @@ lspconfig.util.default_config = vim.tbl_deep_extend(
   lsp_defaults
 )
 
+--[[
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {
     default_config = {
@@ -34,6 +37,7 @@ if not lspconfig.emmet_ls then
     };
   }
 end
+--]]
 
 lspconfig.efm.setup{
 	filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "yaml", "markdown"},
@@ -117,3 +121,39 @@ lspconfig.gdscript.setup{
 lspconfig.ccls.setup{
 	on_attach = on_attach,
 }
+
+lspconfig.svelte.setup{
+	on_attach = on_attach,
+}
+
+lspconfig.eslint.setup{
+	on_attach = on_attach,
+}
+
+
+-- Auto format on save
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local null_ls = require("null-ls");
+
+
+null_ls.setup({
+	sources = {
+		null_ls.builtins.formatting.prettierd
+	},
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format()
+				end,
+			})
+		end
+	end,
+})
+
+--lspconfig["null-ls"].setup{
+	--on_attach = on_attach,
+--}

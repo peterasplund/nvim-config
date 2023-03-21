@@ -22,6 +22,16 @@ utils.map('n', '<C-l>', '<C-w>l')
 
 utils.map("", "<Leader>f", "<cmd>:lua utils.format<CR>")
 
+-- Handle eslint format
+--[[
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+  command = 'silent! EslintFixAll',
+  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+})
+-]]
+
+
 -- Move between buffers easier
 utils.map('n', '<Leader>j', ':bnext<CR>')
 utils.map('n', '<Leader>k', ':previous<CR>')

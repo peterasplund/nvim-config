@@ -29,8 +29,7 @@ return require('packer').startup(function ()
 			vim.cmd("TSUpdate lua")
 			vim.cmd("TSUpdate php")
 			vim.cmd("TSUpdate python")
-			vim.cmd("TSUpdate ruby")
-			vim.cmd("TSUpdate rust")
+			vim.cmd("TSUpdate ruby") vim.cmd("TSUpdate rust")
 			vim.cmd("TSUpdate toml")
 			vim.cmd("TSUpdate vim")
 			vim.cmd("TSUpdate yaml")
@@ -127,5 +126,13 @@ return require('packer').startup(function ()
     end,
     event = "BufRead",
   }
+
+	use "jose-elias-alvarez/null-ls.nvim"
+
+	-- Svelte
+	use 'othree/html5.vim'
+	use 'pangloss/vim-javascript'
+	use 'evanleck/vim-svelte'
+	-- / Svelte
 end)
 
